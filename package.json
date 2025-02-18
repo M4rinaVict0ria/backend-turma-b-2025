@@ -1,0 +1,29 @@
+{
+  "name": "backend-turma-b-2025",
+  "version": "1.0.0",
+  "description": "servidor backend para estudo da turma 3 info 2025",
+  "keywords": [
+    "nodejs",
+    "express",
+    "zod"
+  ],
+  "homepage": "https://github.com/M4rinaVict0ria/backend-turma-b-2025#readme",
+  "bugs": {
+    "url": "https://github.com/M4rinaVict0ria/backend-turma-b-2025/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M4rinaVict0ria/backend-turma-b-2025.git"
+  },
+  "license": "MIT",
+  "author": "Marina V",
+  "type": "module",
+  "main": "src/server.js",
+  
+  "scripts": {
+    "start": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
