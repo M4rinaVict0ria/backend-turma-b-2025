@@ -7,18 +7,24 @@ const PurchaseSchema = z.object({
 });
 
 const purchases = [];
+let nextPurchaseId = 1;
 
 const PurchaseController = {
   create(req, res) {
     try {
       const data = PurchaseSchema.parse(req.body);
-      const newPurchase = { id: Date.now(), ...data };
+      const newPurchase = {
+        id: nextPurchaseId++,
+        ...data,
+        purchased_at: new Date().toISOString() // Gera a data atual automaticamente
+      };
       purchases.push(newPurchase);
-      res.status(201).json({ message: "Item comprado", purchase: newPurchase });
+      res.status(201).json({ message: "Compra registrada", purchase: newPurchase });
     } catch (error) {
       res.status(400).json({ error: error.errors });
     }
   },
+
   getAll(req, res) {
     res.json(purchases);
   }

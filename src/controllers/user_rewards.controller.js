@@ -7,12 +7,13 @@ const UserRewardSchema = z.object({
 });
 
 const userRewards = [];
+let nextUserRewardId = 1; // ID sequencial
 
 const UserRewardController = {
   create(req, res) {
     try {
       const data = UserRewardSchema.parse(req.body);
-      const newReward = { id: Date.now(), ...data };
+      const newReward = { id: nextUserRewardId++, ...data };
       userRewards.push(newReward);
       res.status(201).json({ message: "Recompensa desbloqueada", reward: newReward });
     } catch (error) {

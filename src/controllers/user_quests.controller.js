@@ -8,12 +8,13 @@ const UserQuestSchema = z.object({
 });
 
 const userQuests = [];
+let nextUserQuestId = 1; // ID sequencial
 
 const UserQuestController = {
   create(req, res) {
     try {
       const data = UserQuestSchema.parse(req.body);
-      const newUserQuest = { id: Date.now(), ...data };
+      const newUserQuest = { id: nextUserQuestId++, ...data };
       userQuests.push(newUserQuest);
       res.status(201).json({ message: "Progresso em missão salvo", userQuest: newUserQuest });
     } catch (error) {
