@@ -8,12 +8,13 @@ const QuestSchema = z.object({
 });
 
 const quests = [];
+let nextQuestId = 1;  // Iniciando o ID sequencial
 
 const QuestController = {
   create(req, res) {
     try {
       const data = QuestSchema.parse(req.body);
-      const newQuest = { id: Date.now(), ...data };
+      const newQuest = { id: nextQuestId++, ...data };  // Incrementando o ID
       quests.push(newQuest);
       res.status(201).json({ message: "Missão adicionada", quest: newQuest });
     } catch (error) {

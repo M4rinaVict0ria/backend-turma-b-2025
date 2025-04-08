@@ -8,11 +8,13 @@ const PracticeSchema = z.object({
 
 const practices = [];
 
+let currentId = 1;  // Começando o contador
+
 const PracticeController = {
   create(req, res) {
     try {
       const data = PracticeSchema.parse(req.body);
-      const newPractice = { id: Date.now(), ...data };
+      const newPractice = { id: currentId++, ...data };  // Incrementa o contador
       practices.push(newPractice);
       res.status(201).json({ message: "Prática criada", practice: newPractice });
     } catch (error) {
